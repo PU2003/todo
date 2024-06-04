@@ -1,0 +1,45 @@
+.counterButton{
+    font-size:16px;
+    background-color:#f0d680;
+    width:100px;
+    margin:10px;
+    color:white;
+    padding:15px;
+    border-radius:30px;
+    border-color:darkred;
+    border-width: 5px;
+}
+
+.count{
+    font-size: 10px;
+    padding: 20px;
+}
+
+.decrcount{
+    font-size:16px;
+    background-color:#1fdaca;
+    width:100px;
+    margin:10px;
+    color:white;
+    padding:15px;
+    border-radius:30px;
+    border-color:rgb(53, 56, 226);
+    border-width: 5px;
+}
+
+.totalCount{
+    font-size: 150px;
+    color: blueviolet;
+}
+
+.reset{
+    background-color:rgb(90, 202, 230);
+    font-size: 18px;
+    color:white;
+    border-radius: 30px;
+    width:150px;
+    border-color: rgb(247, 47, 157);
+    border-width: 5px;
+    margin-top: 12px;
+    padding: 10px;
+}
