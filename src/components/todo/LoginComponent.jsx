@@ -1,5 +1,7 @@
 import React ,{useState} from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "./security/AuthContext"
+
 
 export default function LoginComponent(){
 
@@ -7,11 +9,11 @@ export default function LoginComponent(){
 
     const [password,setPassword] = useState('')
 
-    const [showSuccessMessage,setShowSuccessMessage] = useState()
-
     const [showFailureMessage,setShowFailureMessage] = useState()
 
     const navigate = useNavigate();
+
+    const authContext = useAuth()
 
     function handleUsernameChange(event){
           //console.log(event.target.value)
@@ -26,18 +28,15 @@ export default function LoginComponent(){
 
     function handleSubmit(){
 
-        if(username === "prachi" && password === "password"){
-              setShowSuccessMessage(true)
-              setShowFailureMessage(false)
-              console.log(showSuccessMessage)
+        if(authContext.login(username,password)){
+
               navigate(`/welcome/${username}`)                           // in order to take variables we use ${} and within ` ` (tick)
+              
         }
 
         else{
-            setShowSuccessMessage(false)
+            
             setShowFailureMessage(true)
-
-            console.log(showFailureMessage)
         }
     }
 
@@ -60,7 +59,7 @@ export default function LoginComponent(){
     return(
         <div className="Login">
 
-            {showSuccessMessage && <div className="successMessage">Authenticated Successfully.</div>}
+            {/* {showSuccessMessage && <div className="successMessage">Authenticated Successfully.</div>} */}
             {showFailureMessage && <div className="errorMessage">Authenticated Failed. Please check your credentials.</div>}
 
             {/* <div className="successMessage">Authenticated Successfully.</div> */}
