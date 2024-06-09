@@ -22,7 +22,7 @@ import { useContext } from "react";
 
         function login(username,password){
             
-          if(username === "prachi" && password === "password"){
+          if(username === "prachi" && password === "p"){
 
               setAuthenticated(true)
               return true;                         
