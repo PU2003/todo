@@ -20,7 +20,7 @@ export default function WelcomeComponent() {
         // .finally(() => console.log("cleanup"))
 
 
-        retrieveHelloWorldBean(prachi)
+        retrieveHelloWorldBean("prachi")
         .then((response) => successfulResponse(response))
         .catch((error) => errorResponse(error))
         .finally(() => console.log("cleanup"))
