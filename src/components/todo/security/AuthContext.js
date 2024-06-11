@@ -18,19 +18,22 @@ import { useContext } from "react";
         const [number,setNumber] = useState(0);
 
         const [isAuthenticated,setAuthenticated] = useState(false)
-
+        
+        const [username,setUsername] = useState(null)
 
         function login(username,password){
             
           if(username === "prachi" && password === "p"){
 
               setAuthenticated(true)
+              setUsername(username)
               return true;                         
             
           }
 
           else{
               setAuthenticated(false)
+              setUsername(null)
               return false;
           }
 
@@ -41,7 +44,7 @@ import { useContext } from "react";
         }
 
        return(
-            <AuthContext.Provider value={{number,isAuthenticated,login,logout}}>
+            <AuthContext.Provider value={{number,isAuthenticated,login,logout,username}}>
                 {children}
             </AuthContext.Provider>
        )
