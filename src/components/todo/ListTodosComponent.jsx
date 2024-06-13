@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import {retrieveAllTodosForUsername} from "./api/TodoApiService"
+import {addNewTodoApi, retrieveAllTodosForUsername} from "./api/TodoApiService"
 import { deleteTodoForId } from "./api/TodoApiService"
 import { useAuth } from "./security/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { error } from "jquery"
 
 
 export default function ListTodosComponent(){
@@ -69,6 +70,12 @@ export default function ListTodosComponent(){
           
     }
 
+    function addNewTodo(){
+       
+        navigate("/todo/-1")
+        
+    }
+
 
     return (
         <div className="container">
@@ -104,6 +111,7 @@ export default function ListTodosComponent(){
                     </tbody>
                 </table>
              </div>
+             <div className="btn btn-info m-5" onClick={addNewTodo}>Add New Todo</div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom"
-import { retrieveTodoApi, updateTodoApi } from "./api/TodoApiService"
+import { useNavigate, useParams } from "react-router-dom"
+import { retrieveTodoApi, updateTodoApi,createTodoApi } from "./api/TodoApiService"
 import { useEffect, useState } from "react"
 import { Formik,Field,Form, ErrorMessage } from "formik"
 import { useAuth } from "./security/AuthContext"
@@ -11,6 +11,8 @@ export default function TodoComponent(){
 
     const [description,setDescription] = useState('')                             // making the state for desc so that we can change it
     const [targetDate,setTargetDate] = useState("")
+
+    const navigate = useNavigate()
  
     useEffect(                                                                     // we want to call retrieveTodos at the load of the todo page
         () =>  {retrieveTodos();},
@@ -20,12 +22,14 @@ export default function TodoComponent(){
 
     function retrieveTodos(){       
         
+        if(id != -1){
           retrieveTodoApi(id)
           .then( (response) => 
               {setDescription(response.data.description),
               setTargetDate(response.data.targetDate)}
           )
           .catch((error) => console.log(error))
+        }
     }
 
     function onSubmit(values){
@@ -34,19 +38,28 @@ export default function TodoComponent(){
         const todo = {
             id:id,
             username:username,
-            description:description,
-            targetDate:targetDate,
+            description:values.description,
+            targetDate:values.targetDate,
             done:false
         }
 
         console.log(todo)
-        
-        updateTodoApi(id,todo)
-        .then( (response) => 
-              {console.log(response)}
-          )
-        .catch((error) => console.log(error))
 
+
+        if(id == -1){
+            createTodoApi(todo)
+            .then( (response) => 
+                navigate("/todos")
+            )
+            .catch((error) => console.log(error))
+        }
+        else{
+            updateTodoApi(id,todo)
+            .then( (response) => 
+                navigate("/todos")
+            )
+            .catch((error) => console.log(error))
+        }
     }
 
     function validate(values){
@@ -60,7 +73,7 @@ export default function TodoComponent(){
             errors.description = "Enter atleast 5 characaters"                           
         }      
         
-        if(values.targetDate == null){
+        if(values.targetDate == null || values.targetDate == '' ){
             errors.targetDate = "Enter a target date"                           
         } 
 
