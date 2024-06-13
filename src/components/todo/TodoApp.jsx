@@ -58,15 +58,11 @@ export default function TodoApp(){
                             </AuthenticatedRoute>      
                         } />
 
-
                         <Route path="*" element={ <ErrorComponent/> } />                {/* when none of upper route match,this will match*/}
 
                     </Routes>
-                
                 </BrowserRouter>
-           
            </AuthProvider>
-           
         </div>
     )
 }

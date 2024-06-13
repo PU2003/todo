@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import React from "react";
 
 // 1. Create a context.
 
