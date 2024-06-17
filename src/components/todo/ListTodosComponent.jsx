@@ -76,11 +76,23 @@ export default function ListTodosComponent(){
         
     }
 
+    let imageStyle = {
+        height: "100vh",
+        width: "100vw",
+        backgroundImage:
+        'url("https://www.itl.cat/pngfile/big/7-73432_download-custom-size-watercolor-iphone-wallpaper-hd.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: "no-repeat",
+        color: "white", 
+     };
+
 
     return (
+        <div class = "image" style = {imageStyle}>
         <div className="container">
-
-             <h1>Things You Want To Do!</h1>
+            
+             <h1 style={{ color: 'darkblue' }}>Things You Want To Do!</h1>
              {message && <div className="alert alert-warning">{message}</div>}
              <div>
                 <table className="table">
@@ -112,6 +124,7 @@ export default function ListTodosComponent(){
                 </table>
              </div>
              <div className="btn btn-info m-5" onClick={addNewTodo}>Add New Todo</div>
+        </div>
         </div>
     )
 }

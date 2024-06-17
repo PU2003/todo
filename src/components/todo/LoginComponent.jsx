@@ -56,7 +56,19 @@ export default function LoginComponent(){
     //     return null
     // }
 
+    let imageStyle = {
+        height: "100vh",
+        width: "100vw",
+        backgroundImage:
+        'url("https://e0.pxfuel.com/wallpapers/801/81/desktop-wallpaper-cute-home-screen-cute-stitch-aesthetic.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: "no-repeat",
+        color: "white", 
+     };
+
     return(
+        <div class = "image" style = {imageStyle}>
         <div className="Login">
 
             {/* {showSuccessMessage && <div className="successMessage">Authenticated Successfully.</div>} */}
@@ -85,6 +97,7 @@ export default function LoginComponent(){
                     <button type="button" name="login" onClick={handleSubmit}>login</button>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
